@@ -32,5 +32,22 @@ def party():
     return make_response(jsonify({"status": 201, "data": [new_party]}), 201)
 
 
+@app.route('/offices', methods=['POST'])
+def create_office():
+    data = request.get_json()
+    office_name = data['name']
+    office_type = data['type']
+
+    new_office = {
+        "id": len(office_list) + 1,
+        "name": office_name,
+        "type": office_type,
+
+    }
+    office_list.append(new_office)
+
+    return make_response(jsonify({"status": 201, "data": [new_office]}), 201)
+
+
 if __name__ == '__main__':
     app.run()
