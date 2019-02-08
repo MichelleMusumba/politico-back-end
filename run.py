@@ -49,5 +49,13 @@ def create_office():
     return make_response(jsonify({"status": 201, "data": [new_office]}), 201)
 
 
+@app.route('/parties/<party_id>', methods=['GET'])
+def get_party(party_id):
+    for party_item in party_list:
+        if party_item['id'] == party_id:
+            return make_response(jsonify({"status": 200, "data": [party]}), 200)
+        return make_response(jsonify({"status": 404, "error": 'Party not found'}), 404)
+
+
 if __name__ == '__main__':
     app.run()
