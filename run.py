@@ -76,5 +76,14 @@ def edit_party(party_id):
         return make_response(jsonify({"status": 404, "error": 'Party not found'}), 404)
 
 
+@app.route('/parties/<party_id>', methods=['DELETE'])
+def delete_party(party_id):
+    for party_item in party_list:
+        if party_item['id'] == party_id:
+            party_list.remove(party_item)
+            return make_response(jsonify({"status": 200, "message": "deleted successfully"}), 200)
+        return make_response(jsonify({"status": 404, "error": 'Party not found'}), 404)
+
+
 if __name__ == '__main__':
     app.run()
