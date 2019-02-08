@@ -85,5 +85,14 @@ def delete_party(party_id):
         return make_response(jsonify({"status": 404, "error": 'Party not found'}), 404)
 
 
+@app.route('/offices/<office_id>', methods=['GET'])
+def get_office(office_id):
+    for office_item in office_list:
+        if office_item['id'] == office_id:
+            return make_response(jsonify({"status": 200, "data": [office]}), 200)
+        return make_response(jsonify({"status": 404, "error": 'office not found'}), 404)
+
+
+
 if __name__ == '__main__':
     app.run()
