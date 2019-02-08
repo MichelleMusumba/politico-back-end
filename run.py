@@ -11,7 +11,15 @@ def offices():
     return make_response(jsonify({
         "offices": office_list,
         "status": "200"
-    })), 200
+    }), 200)
+
+
+@app.route('/parties', methods=['GET'])
+def parties_g():
+    return make_response(jsonify({
+        "parties": party_list,
+        "status": "200"
+    }), 200)
 
 
 @app.route('/parties', methods=['POST'])
@@ -53,6 +61,17 @@ def create_office():
 def get_party(party_id):
     for party_item in party_list:
         if party_item['id'] == party_id:
+            return make_response(jsonify({"status": 200, "data": [party]}), 200)
+        return make_response(jsonify({"status": 404, "error": 'Party not found'}), 404)
+
+
+@app.route('/parties/<party_id>/name', methods=['PATCH'])
+def edit_party(party_id):
+    data = request.get_json()
+    party_item_name = ['name']
+    for party_item in party_list:
+        if party_item['id'] == party_id:
+            party_item_name = ['name']
             return make_response(jsonify({"status": 200, "data": [party]}), 200)
         return make_response(jsonify({"status": 404, "error": 'Party not found'}), 404)
 
