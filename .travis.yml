@@ -1,0 +1,11 @@
+language: python
+python:
+  - "3.6"
+intall:
+  - pip install -r requirments.txt
+  - pip install pytest
+  - pip install -U pytest
+script:
+  - pytest
+after_success:
+  - coveralls
