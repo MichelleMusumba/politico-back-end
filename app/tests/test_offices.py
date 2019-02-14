@@ -1,12 +1,16 @@
 import json
 from unittest import TestCase
 from run import app
+from run import office_list
 
 
 class OfficeTest(TestCase):
     def setUp(self):
         # Setup a Client
         self.client = app.test_client()
+
+    def tearDown(self):
+        office_list.clear()
 
     def test_view_all_offices_empty(self):
         response = self.client.get('/offices')

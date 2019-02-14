@@ -26,7 +26,7 @@ class PartyTest(TestCase):
         }))
         response = self.client.get('/parties')
 
-        self.assertEqual(response.json['parties'][0]['name'], 'party_list')
+        self.assertEqual(response.json['parties'][0]['name'], 'party_name')
 
     def test_view_a_specific_party_fail(self):
         response = self.client.get('/parties/1')
