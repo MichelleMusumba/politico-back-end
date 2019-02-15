@@ -8,6 +8,6 @@ install:
   - pip install pytest-cov
 
 script:
-  - pytest --cov run
+  - pytest --cov run app/tests
 after_success:
   - coveralls
