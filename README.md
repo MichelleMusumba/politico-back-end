@@ -1,2 +1,4 @@
 # politico-back-end
-politico API
+Politico API endpoints 
+
+!['Travis Badge'](https://travis-ci.org/MichelleMusumba/politico-back-end.svg?branch=develop)
