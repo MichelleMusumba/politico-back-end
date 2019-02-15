@@ -5,6 +5,7 @@ intall:
   - pip install -r requirements.txt
   - pip install pytest
   - pip install pytest-cov
+  - pip install python-coveralls
 script:
   - pytest --cov run
 after_success:
