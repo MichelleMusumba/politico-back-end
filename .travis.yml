@@ -2,10 +2,11 @@ language: python
 python:
   - "3.6"
 intall:
-  - pip install -r requirments.txt
+  - pip install -r requirements.txt
   - pip install pytest
-  - pip install -U pytest
+  - pip install pytest-cov
+  - pip install python-coveralls
 script:
-  - pytest
+  - pytest --cov run
 after_success:
   - coveralls

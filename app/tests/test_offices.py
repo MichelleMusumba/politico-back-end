@@ -1,12 +1,15 @@
 import json
 from unittest import TestCase
-from run import app
+from run import app, office_list
 
 
 class OfficeTest(TestCase):
     def setUp(self):
         # Setup a Client
         self.client = app.test_client()
+
+    def tearDown(self):
+        office_list.clear()
 
     def test_view_all_offices_empty(self):
         response = self.client.get('/offices')
@@ -39,8 +42,8 @@ class OfficeTest(TestCase):
 
     def test_create_an_office(self):
         response = self.client.post('/offices', data=json.dumps({
-            "name": "office name",
-            "type": "office type"
+            "name": "office_name",
+            "type": "office_type"
         }))
 
         self.assertEqual(len(response.json['data']), 1)
