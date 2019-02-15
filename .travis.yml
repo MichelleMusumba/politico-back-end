@@ -4,9 +4,8 @@ python:
 intall:
   - pip install -r requirments.txt
   - pip install pytest
-  - pip install -U pytest
   - pip install pytest-cov
 script:
-  - pytest --cov=app
+  - pytest --cov app
 after_success:
   - coveralls
